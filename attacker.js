@@ -1,7 +1,4 @@
 var runs = [];
-var FPS_first_sec = 0;
-var FPS_second_sec = 0;
-var FPS_third_sec = 0;
 
 function createRunFunction(description, source, prevFunction) {
 
@@ -10,6 +7,9 @@ function createRunFunction(description, source, prevFunction) {
     console.log("then executed for "+description)
     var timeStamps = [];
     // !!!!!!!!!
+    var FPS_first_sec = [];
+    var FPS_second_sec = [];
+    var FPS_third_sec = [];
     var framesArray = [];
     var startTimeMillisec = performance.now();
 
@@ -40,6 +40,22 @@ function createRunFunction(description, source, prevFunction) {
         setTimeout(fun.nextFunc, 100);
 
         console.log('!!! !!! FINAL Frames : ', description, " total frames :", framesArray.length);
+
+        var i;
+        for (i = 0; i < framesArray.length; i++) {
+          if (!(Math.floor(framesArray[i]) >= 1000)) {
+            FPS_first_sec.push(framesArray[i]);
+          }
+          else if (Math.floor(framesArray[i]) > 1000 && !(Math.floor(framesArray[i]) >= 2000)) {
+            FPS_second_sec.push(framesArray[i]);
+          }
+          else if (Math.floor(framesArray[i]) > 2000 && !(Math.floor(framesArray[i]) >= 3000)) {
+            FPS_third_sec.push(framesArray[i]);
+          }
+        }
+        console.log('!!! !!! 1st second : ', description, " total frames :", FPS_first_sec.length);
+        console.log('!!! !!! 2nd second : ', description, " total frames :", FPS_second_sec.length);
+        console.log('!!! !!! 3rd second : ', description, " total frames :", FPS_third_sec.length);
       }
     }
     requestAnimationFrame(render);
