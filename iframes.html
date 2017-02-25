@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Iframes page</title>
+  <style>
+  </style>
+</head>
+<body>
+  <h1>This is an iframes page</h1>
+  <img src="http://replygif.net/i/675.gif" alt="gif">
+  <iframe id="iframe2" width="550" height="350" src="https://www.youtube.com/embed/nfwWKCRth_A"></iframe>
+  <br>
+  <iframe id="iframe3" width="600" height="400" src="http://www.redfm.gr/"></iframe>
+  <video id="myVideo" width="520" height="440" src="video.mov"></video>
+  <iframe id="iframe1" width="600" height="400" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fyanntiersen.official%2Fposts%2F10154603903106763&width=500
+  "></iframe>
+</body>
+<script>
+  //console.log('domain :', document.domain);
+  //document.domain = "www.google.com";
+	window.getElementById('iframe3').scrollTo(0, 1000);
+  var vid = document.getElementById("myVideo");
+  vid.autoplay = true;
+  vid.load();
+</script>
+</html>
