@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complex page</title>
+    <style type="text/css">
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+            -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+            animation-name: example;
+            animation-duration: 4s;
+        }
+
+        /* Safari 4.0 - 8.0 */
+        @-webkit-keyframes example {
+            from {background-color: red; width: 100px;}
+            to {background-color: yellow;width: 1000px;}
+        }
+
+        /* Standard syntax */
+        @keyframes example {
+            from {background-color: red;width: 100px;}
+            to {background-color: yellow;width: 1000px;}
+        }
+    </style>
+</head>
+<body>
+    <h1>This is a highly complex page</h1>
+    <div></div>
+</body>
+</html>

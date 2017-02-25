@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  #container {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    background-color: yellow;
+  }
+  #first,
+  #second {
+    width: 30%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: red;
+  }
+  #second {
+    z-index: 10;
+  }
+  #third {
+    width: 70px;
+    height: 40px;
+    position: absolute;
+    left: 100px;
+    top: 150px;
+    background-color: blue;
+  }
+  }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="first">a</div>
+    <div id="second">
+      <div id="third">adscdcd</div>
+      <img src="https://www.adzuna.com.au/blog/wp-content/uploads/2015/01/adzuna_stacked_logo.png" height="200" width="320" />logo
+    </div>
+  </div>
+</body>
+</html>
