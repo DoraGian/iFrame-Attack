@@ -14,10 +14,12 @@ function createRunFunction(description, source, prevFunction) {
     var FPS_fifth_sec = [];
     var FPS_sixth_sec = [];
     var framesArray = [];
+    // start timer
     var startTimeMillisec = performance.now();
 
     function render(now) {
 
+      //
       var passingTime = performance.now();
       var timeOfOneFrame = passingTime - startTimeMillisec;
 
@@ -46,12 +48,12 @@ function createRunFunction(description, source, prevFunction) {
         var i;
         for (i = 0; i < framesArray.length; i++) {
           if (!(Math.floor(framesArray[i]) >= 1010)) {
-            FPS_first_sec.push(framesArray[i+1]);
+            FPS_first_sec.push(framesArray[i]);
           }
           else if (Math.floor(framesArray[i]) > 1010 && !(Math.floor(framesArray[i]) >= 2010)) {
             FPS_second_sec.push(framesArray[i]);
           }
-          else if (Math.floor(framesArray[i]) > 2010 && !(Math.floor(framesArray[i]) >= 3010)) {
+          else if (Math.floor(framesArray[i]) > 2010 /*&& !(Math.floor(framesArray[i]) >= 3010)*/) {
             FPS_third_sec.push(framesArray[i]);
           }
           // else if (Math.floor(framesArray[i]) > 3000 && !(Math.floor(framesArray[i]) >= 4000)) {
@@ -64,12 +66,15 @@ function createRunFunction(description, source, prevFunction) {
           //   FPS_sixth_sec.push(framesArray[i]);
           // }
         }
-        console.log('!!! !!! 1st second : ', description, " total frames :", FPS_first_sec.length, (Math.floor(FPS_first_sec[FPS_first_sec.length-1])));
+        console.log('!!! !!! 1st second : ', description, " total frames :", FPS_first_sec.length-1, (Math.floor(FPS_first_sec[FPS_first_sec.length-1])));
         console.log('!!! !!! 2nd second : ', description, " total frames :", FPS_second_sec.length, (Math.floor(FPS_second_sec[FPS_second_sec.length-1])));
-        console.log('!!! !!! 3rd second : ', description, " total frames :", FPS_third_sec.length, (Math.floor(FPS_third_sec[FPS_third_sec.length-1])));
+        console.log('!!! !!! 3rd second : ', description, " total frames :", FPS_second_sec.length, (Math.floor(FPS_third_sec[FPS_third_sec.length-1])));
         // console.log('!!! !!! 4th second : ', description, " total frames :", FPS_fourth_sec.length, FPS_fourth_sec[length-1]);
         // console.log('!!! !!! 5th second : ', description, " total frames :", FPS_fifth_sec.length, FPS_fifth_sec[length-1]);
         // console.log('!!! !!! 6th second : ', description, " total frames :", FPS_sixth_sec.length, FPS_sixth_sec[length-1]);
+        // console.log('!!!  1st ARRAY', FPS_first_sec);
+        // console.log('!!!  2nd ARRAY', FPS_second_sec);
+        // console.log('!!!  3rd ARRAY', FPS_third_sec);
       }
     }
     requestAnimationFrame(render);
@@ -109,19 +114,19 @@ window.addEventListener("load", function() {
     iframebtn.parentNode.removeChild(iframebtn);
     setTimeout(function() {
 
-      // var p1 = createRunFunction("1. simple", "text.html");
-      // var p2 = createRunFunction("2. simple", "text.html", p1);
-      // var p3 = createRunFunction("3. simple", "text.html", p2);
-      // var p4 = createRunFunction("4. simple", "text.html", p3);
-      // var p5 = createRunFunction("5. simple", "text.html", p4);
-      // var p6 = createRunFunction("6. simple", "text.html", p5);
+      var p1 = createRunFunction("1. simple", "text.html");
+      var p2 = createRunFunction("2. simple", "text.html", p1);
+      var p3 = createRunFunction("3. simple", "text.html", p2);
+      var p4 = createRunFunction("4. simple", "text.html", p3);
+      var p5 = createRunFunction("5. simple", "text.html", p4);
+      var p6 = createRunFunction("6. simple", "text.html", p5);
 
-      var p1 = createRunFunction("1. complex", "complex.html");
-      var p2 = createRunFunction("2. complex", "complex.html", p1);
-      var p3 = createRunFunction("3. complex", "complex.html", p2);
-      var p4 = createRunFunction("4. complex", "complex.html", p3);
-      var p5 = createRunFunction("5. complex", "complex.html", p4);
-      var p6 = createRunFunction("6. complex", "complex.html", p5);
+      // var p1 = createRunFunction("1. complex", "iframes.html");
+      // var p2 = createRunFunction("2. complex", "iframes.html", p1);
+      // var p3 = createRunFunction("3. complex", "iframes.html", p2);
+      // var p4 = createRunFunction("4. complex", "iframes.html", p3);
+      // var p5 = createRunFunction("5. complex", "iframes.html", p4);
+      // var p6 = createRunFunction("6. complex", "iframes.html", p5);
 
       // var p1 = createRunFunction("1. complex", "examplePages/gif.html");
       // var p2 = createRunFunction("2. complex", "examplePages/gif.html", p1);
