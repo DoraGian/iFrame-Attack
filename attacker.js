@@ -22,18 +22,17 @@ function createRunFunction(description, source, prevFunction) {
       var timeOfOneFrame = passingTime - startTimeMillisec;
 
       framesArray.push(passingTime - startTimeMillisec);
-      //console.log('!!! Frames : ', framesArray.length);
 
       timeStamps.push(now);
 
-      if (now - timeStamps[0] < 6000) {
+      if (now - timeStamps[0] < 3000) {
 
           requestAnimationFrame(render);
       }
       else {
         var ts2 = [];
 
-        for (var i = 1; i< timeStamps.length; ++i) {
+        for (var i = 0; i< timeStamps.length; ++i) {
 
           ts2.push(timeStamps[i] - timeStamps[i-1]);
         }
@@ -42,35 +41,35 @@ function createRunFunction(description, source, prevFunction) {
         runs.push({description: description, values: ts2});
         setTimeout(fun.nextFunc, 100);
 
-        console.log('!!! !!! FINAL Frames : ', description, " total frames :", framesArray.length);
+        console.log('!!! !!! TOTAL Frames : ', description, "  :", framesArray.length-1);
 
         var i;
         for (i = 0; i < framesArray.length; i++) {
-          if (!(Math.floor(framesArray[i]) >= 1000)) {
-            FPS_first_sec.push(framesArray[i]);
+          if (!(Math.floor(framesArray[i]) >= 1010)) {
+            FPS_first_sec.push(framesArray[i+1]);
           }
-          else if (Math.floor(framesArray[i]) > 1000 && !(Math.floor(framesArray[i]) >= 2000)) {
+          else if (Math.floor(framesArray[i]) > 1010 && !(Math.floor(framesArray[i]) >= 2010)) {
             FPS_second_sec.push(framesArray[i]);
           }
-          else if (Math.floor(framesArray[i]) > 2000 && !(Math.floor(framesArray[i]) >= 3000)) {
+          else if (Math.floor(framesArray[i]) > 2010 && !(Math.floor(framesArray[i]) >= 3010)) {
             FPS_third_sec.push(framesArray[i]);
           }
-          else if (Math.floor(framesArray[i]) > 3000 && !(Math.floor(framesArray[i]) >= 4000)) {
-            FPS_fourth_sec.push(framesArray[i]);
-          }
-          else if (Math.floor(framesArray[i]) > 4000 && !(Math.floor(framesArray[i]) >= 5000)) {
-            FPS_fifth_sec.push(framesArray[i]);
-          }
-          else if (Math.floor(framesArray[i]) > 5000 && !(Math.floor(framesArray[i]) >= 6000)) {
-            FPS_sixth_sec.push(framesArray[i]);
-          }
+          // else if (Math.floor(framesArray[i]) > 3000 && !(Math.floor(framesArray[i]) >= 4000)) {
+          //   FPS_fourth_sec.push(framesArray[i]);
+          // }
+          // else if (Math.floor(framesArray[i]) > 4000 && !(Math.floor(framesArray[i]) >= 5000)) {
+          //   FPS_fifth_sec.push(framesArray[i]);
+          // }
+          // else if (Math.floor(framesArray[i]) > 5000 && !(Math.floor(framesArray[i]) >= 6000)) {
+          //   FPS_sixth_sec.push(framesArray[i]);
+          // }
         }
-        console.log('!!! !!! 1st second : ', description, " total frames :", FPS_first_sec.length, FPS_first_sec[length-1] );
-        console.log('!!! !!! 2nd second : ', description, " total frames :", FPS_second_sec.length, FPS_second_sec[length-1]);
-        console.log('!!! !!! 3rd second : ', description, " total frames :", FPS_third_sec.length, FPS_third_sec[length-1]);
-        console.log('!!! !!! 4th second : ', description, " total frames :", FPS_fourth_sec.length, FPS_fourth_sec[length-1]);
-        console.log('!!! !!! 5th second : ', description, " total frames :", FPS_fifth_sec.length, FPS_fifth_sec[length-1]);
-        console.log('!!! !!! 6th second : ', description, " total frames :", FPS_sixth_sec.length, FPS_sixth_sec[length-1]);
+        console.log('!!! !!! 1st second : ', description, " total frames :", FPS_first_sec.length, (Math.floor(FPS_first_sec[FPS_first_sec.length-1])));
+        console.log('!!! !!! 2nd second : ', description, " total frames :", FPS_second_sec.length, (Math.floor(FPS_second_sec[FPS_second_sec.length-1])));
+        console.log('!!! !!! 3rd second : ', description, " total frames :", FPS_third_sec.length, (Math.floor(FPS_third_sec[FPS_third_sec.length-1])));
+        // console.log('!!! !!! 4th second : ', description, " total frames :", FPS_fourth_sec.length, FPS_fourth_sec[length-1]);
+        // console.log('!!! !!! 5th second : ', description, " total frames :", FPS_fifth_sec.length, FPS_fifth_sec[length-1]);
+        // console.log('!!! !!! 6th second : ', description, " total frames :", FPS_sixth_sec.length, FPS_sixth_sec[length-1]);
       }
     }
     requestAnimationFrame(render);
@@ -110,12 +109,12 @@ window.addEventListener("load", function() {
     iframebtn.parentNode.removeChild(iframebtn);
     setTimeout(function() {
 
-      // var p1 = createRunFunction("1. simple", "login.html");
-      // var p2 = createRunFunction("2. simple", "login.html", p1);
-      // var p3 = createRunFunction("3. simple", "login.html", p2);
-      // var p4 = createRunFunction("4. simple", "login.html", p3);
-      // var p5 = createRunFunction("5. simple", "login.html", p4);
-      // var p6 = createRunFunction("6. simple", "login.html", p5);
+      // var p1 = createRunFunction("1. simple", "text.html");
+      // var p2 = createRunFunction("2. simple", "text.html", p1);
+      // var p3 = createRunFunction("3. simple", "text.html", p2);
+      // var p4 = createRunFunction("4. simple", "text.html", p3);
+      // var p5 = createRunFunction("5. simple", "text.html", p4);
+      // var p6 = createRunFunction("6. simple", "text.html", p5);
 
       var p1 = createRunFunction("1. complex", "complex.html");
       var p2 = createRunFunction("2. complex", "complex.html", p1);

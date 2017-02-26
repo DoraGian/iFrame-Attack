@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple page</title>
+</head>
+<body>
+<h1>Timing Attacks on Inline Frames</h1>
+<p>The same origin policy is one of the Web’s fundamental security features.
+  Among other implications, this prevents scripts running in a parent frame
+  to access DOM elements within an iframe loaded from a different origin.
+  Recently, side channel attacks utilizing rendering timings [1] or download
+  sizes [2] have been published.</p>
+
+<p>Browser vendors reacted to the CSS filter based rendering timing attack [1]
+   by rewriting the filter code to be executed in constant time. However,
+   the fundamental problem could not be addressed. Since both attacker and target
+   frame share the same resources for rendering (i.e. hardware) complex victim
+   webpages will have a higher impact on the frames per seconds drawable in the
+   attacker frame. This yields one bit of information (complex/simple webpage)
+   which is enough to determine the login status of a user on a specific webpage.
+   Furthermore, modifying the fragment identifier (#) of a loaded iframe can
+   force redraw events – if that fragment identifier is present in the currently
+   loaded iframe. Again, this yields one bit of information.</p>
+</body>
+</html>
